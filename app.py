@@ -172,7 +172,7 @@ def process_bot_logic(phone, step, data, message):
         data = {}
     
     # New Booking
-    elif message in ["📅 New Booking", "Book Now", "New Booking"]:
+    elif "New Booking" in message:
         user = db.get_user(phone)
         if not user or not user.get('name'):
             response = "Please enter your name:"
@@ -429,7 +429,7 @@ def process_bot_logic(phone, step, data, message):
             response += "Type *Cancel* to go back"
     
     # My Bookings
-    elif message in ["📋 My Bookings", "My Bookings", "Bookings"]:
+    elif "My Bookings" in message:
         bookings = db.get_bookings(phone=phone)
         
         if bookings:
@@ -462,7 +462,7 @@ def process_bot_logic(phone, step, data, message):
         step = 'menu'
     
     # Contact
-    elif message in ["📞 Contact Us", "Contact", "Contact Us"]:
+    elif "Contact Us" in message:
         response = f"*📞 Contact {Config.SALON_NAME}*\n\n"
         response += f"📍 *Address:*\n{Config.SALON_ADDRESS}\n\n"
         response += f"📱 *Phone:*\n{Config.SALON_PHONE}\n\n"
