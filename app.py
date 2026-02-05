@@ -137,7 +137,7 @@ def handle_text_message(phone, message):
 
 def process_bot_logic(phone, step, data, message):
     """Main bot logic with improved error handling"""
-    if step is None or step ==""
+    if step is None or step =="":
        step="menu"
     
     if not data:
