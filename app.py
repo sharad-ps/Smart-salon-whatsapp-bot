@@ -160,7 +160,7 @@ def process_bot_logic(phone, step, data, message):
         return 'menu', {}, response
     
     # Menu
-    if step == 'menu' or message.lower() in ['hi', 'hello', 'hey', 'namaste']:
+    if step == message.lower() in ['hi', 'hello', 'hey', 'namaste']:
         user = db.get_user(phone)
         if user and user.get('name'):
             response = f"👋 Welcome back *{user['name']}*!\n\n"
