@@ -546,7 +546,7 @@ def send_bot_response(phone, step, data, text_response):
         available_slots = get_available_slots(data['date'])
         sections = [{
             "title":"Available Time Slots","rows":[{"id",slot,"title":slot
-                                                    ]
+                   }]
         }]
         whatsapp.send_interactive_list(phone, text_response,"⏰Choose Time",sections)
         
