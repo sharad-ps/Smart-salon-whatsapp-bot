@@ -354,7 +354,7 @@
                         <td>{{ booking.name }}</td>
                         <td>{{ booking.phone }}</td>
                         <td>
-                            {% set service_ids = booking.services | from_json %}
+                            {% set service_ids = booking.services %}
                             {% for sid in service_ids %}
                             {{ services[sid]['name'] }}<br>
                             {% endfor %}
