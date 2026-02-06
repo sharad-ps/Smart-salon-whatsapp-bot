@@ -287,6 +287,8 @@ def process_bot_logic(phone, step, data, message):
             
             response = f"*📅 Date Selected: {message}*\n\n"
             response += "⏰ *Available Time Slots:*\n\n"
+            step = 'select_time'
+            
             for slot in available_slots:
                 response += f"• {slot}\n"
             response += "\nReply with your preferred time\n"
@@ -539,7 +541,15 @@ def send_bot_response(phone, step, data, text_response):
             "rows": [{"id": d['value'], "title": d['label']} for d in dates]
         }]
         whatsapp.send_interactive_list(phone, text_response, "📅 Choose Date", sections)
-    
+        
+    elif step =='select_time':
+        available_slots = get_available_slots(data['date'])
+        sections = [{
+            "title":"Available Time Slots","rows":[{"id",slot,"title":slot
+                                                    ]
+        }]
+        whatsapp.send_interactive_list(phone, text_response,"⏰Choose Time",sections)
+        
     elif step == 'confirm_without_payment':
         whatsapp.send_interactive_buttons(phone, text_response, ["✅ Confirm Now", "❌ Cancel"])
     
