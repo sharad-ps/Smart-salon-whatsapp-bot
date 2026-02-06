@@ -356,7 +356,7 @@
                         <td>
                             {% set service_ids = booking.services %}
                             {% for sid in service_ids %}
-                            {{ services[sid]['name'] }}<br>
+                            {{ services[sid] }}<br>
                             {% endfor %}
                         </td>
                         <td>
