@@ -140,7 +140,8 @@ def handle_text_message(phone, message):
 
 def process_bot_logic(phone, step, data, message):
     """Main bot logic with improved error handling"""
-    
+    if step is None or step =="":
+        step="menu"
     if not data:
         data = {
             'services': [],
@@ -153,7 +154,7 @@ def process_bot_logic(phone, step, data, message):
     response = ""
     
     # Universal menu command
-    if message and message.lower() in ['menu', 'main menu', 'start', 'restart', 'back to menu']:
+    if message.lower() in ['menu', 'main menu', 'start', 'restart', 'back to menu']:
         user = db.get_user(phone)
         if user and user.get('name'):
             response = f"👋 Welcome back *{user['name']}*!\n\n"
@@ -163,7 +164,7 @@ def process_bot_logic(phone, step, data, message):
         return 'menu', response
     
     # Menu
-    if step == 'menu' or message.lower() in ['hi', 'hello', 'hey', 'namaste']:
+    if step == 'menu' and message.lower() in ['hi', 'hello', 'hey', 'namaste']:
         user = db.get_user(phone)
         if user and user.get('name'):
             response = f"👋 Welcome back *{user['name']}*!\n\n"
