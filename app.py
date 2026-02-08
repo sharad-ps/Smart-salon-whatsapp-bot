@@ -150,7 +150,7 @@ def process_bot_logic(phone, step, data, message):
     response = ""
     
     # Universal menu command
-    if message.lower() in ['menu', 'main menu', 'start', 'restart', 'back to menu']:
+    if message and message.lower() in ['menu', 'main menu', 'start', 'restart', 'back to menu']:
         user = db.get_user(phone)
         if user and user.get('name'):
             response = f"👋 Welcome back *{user['name']}*!\n\n"
