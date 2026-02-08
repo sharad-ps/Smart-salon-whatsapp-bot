@@ -94,7 +94,9 @@ def webhook():
         
         message = messages[0]
         from_phone = message['from']
-        
+         if message.get("from") == config.WHATSAPP_PHONE_ID:
+             return jsonify({'status':'ok'}),200
+             
         # Handle different message types
         message_type = message.get('type')
         
