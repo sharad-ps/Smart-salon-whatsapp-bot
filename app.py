@@ -157,7 +157,7 @@ def process_bot_logic(phone, step, data, message):
         else:
             response = f"👋 Welcome to *{Config.SALON_NAME}*!\n\n"
         response += "How can I help you today?"
-        return 'menu', {}, response
+        return 'menu', response
     
     # Menu
     if step == 'menu' or message.lower() in ['hi', 'hello', 'hey', 'namaste']:
